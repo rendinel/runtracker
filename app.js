@@ -11,7 +11,7 @@ function addNewEntry(newEntry){
     // we create the element li
     const listItem = document.createElement('li');
     // we store the text from the data inside this let 
-    const listValue =  document.createTextNode(newEntry);
+    const listValue =  document.createTextNode(newEntry.toFixed(1));
     // we pass the text from the data to the li we created
     listItem.appendChild(listValue);
     //we put the li insdide the ul
@@ -23,9 +23,15 @@ function reducer(total,currentValue){
 }
 //fourth step we take the empty array and we add the reducer with reduce,then we set that this sum is equal to the inner html of the value we want to update in the html
 function calcTotal(entries){
-    const totalValue = entries.reduce(reducer);
+    const totalValue = entries.reduce(reducer).toFixed(1);
     document.getElementById('total').innerText = totalValue;
     document.getElementById('progressTotal').innerText = totalValue;
+}
+
+//fifth step calculate the average
+function calcAverage(){
+    const average = (entries.reduce(reducer) / entries.length).toFixed(1);
+    document.getElementById('average').innerText = average; 
 }
 
 //first step
@@ -43,6 +49,7 @@ function handleSubmit(event){
     //we send the data to addNewEntry function
     addNewEntry(entry);
     calcTotal(entries);
+    calcAverage(entries);
 }
 
 // we select the form and launch the handleSubmit function everytime the form submit something
