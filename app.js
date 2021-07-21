@@ -17,6 +17,16 @@ function addNewEntry(newEntry){
     //we put the li insdide the ul
     entriesWrapper.appendChild(listItem);
 }
+//third step we write a reducer function  takes total and currentValue and return the sum of the two
+function reducer(total,currentValue){
+    return total + currentValue;
+}
+//fourth step we take the empty array and we add the reducer with reduce,then we set that this sum is equal to the inner html of the value we want to update in the html
+function calcTotal(entries){
+    const totalValue = entries.reduce(reducer);
+    document.getElementById('total').innerText = totalValue;
+    document.getElementById('progressTotal').innerText = totalValue;
+}
 
 //first step
 function handleSubmit(event){
@@ -32,6 +42,8 @@ function handleSubmit(event){
     entries.push(entry);
     //we send the data to addNewEntry function
     addNewEntry(entry);
+    calcTotal(entries);
 }
 
+// we select the form and launch the handleSubmit function everytime the form submit something
 const form  = document.querySelector('form').addEventListener('submit', handleSubmit);

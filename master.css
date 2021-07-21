@@ -4,7 +4,7 @@ html {
     background:#2d3740;
 }
 
-body{
+body {
     padding: 1rem;
     background: #1c262f;
     color: rgb(230,225,225);
@@ -35,7 +35,7 @@ input[type="number"] {
    text-align: center;
 }
 
-button{
+button {
     font-family: inherit;
     font-size: 1.4rem;
     font-weight: bolder;
