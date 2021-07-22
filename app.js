@@ -1,3 +1,7 @@
+// we define a weekly high default
+const goal = 25;
+document.getElementById('high').innerText = goal;
+
 //empty array we are going to fill with the data typed
 let entries = [];
 
@@ -33,6 +37,19 @@ function calcAverage(){
     const average = (entries.reduce(reducer) / entries.length).toFixed(1);
     document.getElementById('average').innerText = average; 
 }
+//sixth step we calculate the highest value of our array entry with math.max and the spread operator otherwise the value will be null
+function weeklyHigh(){
+    const high = Math.max(...entries);
+    document.getElementById('high').innerText = high;
+}
+
+function calGoal(){
+    const totalValue = entries.reduce(reducer).toFixed(1);
+    const completedPercent = totalValue / (goal / 100);
+    const progressCircle = document.querySelector('#progressCircle');
+    if(completedPercent > 100) completedPercent === 100;
+    progressCircle.style.background = `conic-gradient(#70db70 ${completedPercent}%,#2d3740 ${completedPercent}% 100%)`;
+}
 
 //first step
 function handleSubmit(event){
@@ -50,6 +67,8 @@ function handleSubmit(event){
     addNewEntry(entry);
     calcTotal(entries);
     calcAverage(entries);
+    weeklyHigh(entries);
+    calGoal(entries);
 }
 
 // we select the form and launch the handleSubmit function everytime the form submit something
