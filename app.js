@@ -43,6 +43,7 @@ function weeklyHigh(){
     document.getElementById('high').innerText = high;
 }
 
+//final step calculate the complete percentual and pass to the css so the graphic will charge correctly
 function calGoal(){
     const totalValue = entries.reduce(reducer).toFixed(1);
     const completedPercent = totalValue / (goal / 100);
